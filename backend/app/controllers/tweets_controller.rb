@@ -3,8 +3,8 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @tweets = Tweet.all
-
+    @user = User.find(params[:user_id])
+    @tweets = CLIENT.user_timeline(@user.name)
     render json: @tweets
   end
 
