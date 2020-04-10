@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  belongs_to :tweets
+  has_many :tweets
 end
