@@ -23,20 +23,6 @@ module Backend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "B0A8fbABdowhtpx1qWQwMSRWE"
-      config.consumer_secret     = "ODBbef3hOaHm0Fcu4LQRVL5J6n0wiPh5GPDy5KqpQlY4v1q4k2"
-      config.access_token        = "1175424370812080130-o5t3zEDtFu4YQxYRJ6uUaVxlyBD2xJ"
-      config.access_token_secret = "65tfSZdIwVQKfnABIyHOcE8C4SbRYPUL04s6X4ZCexYHe"
-    end
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
-
-    # Only loads a smaller set of middleware suitable for API only apps.
-    # Middleware like session, flash, cookies can be added back manually.
-    # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
   end
 end
