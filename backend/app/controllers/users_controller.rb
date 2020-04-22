@@ -1,5 +1,7 @@
+require 'pry'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  
 
   # GET /users
   def index
@@ -9,8 +11,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    
-    redirect_to user_tweets_path(@user)
+    redirect_to user_comments_path(@user)
   end
 
   # POST /users
@@ -46,6 +47,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :tweets_id)
+      params.require(:user).permit(:name, :user_handle, :comments_id)
     end
 end
