@@ -10,20 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_170321) do
+ActiveRecord::Schema.define(version: 2020_04_15_223814) do
 
-  create_table "tweets", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.string "t_text"
+    t.string "t_user_name"
+    t.string "t_user_screen_name"
+    t.string "t_user_profile_image_url"
+    t.string "t_user_profile_banner_url"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_tweets_on_user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "handles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "tweets", "users"
+  create_table "tweets", force: :cascade do |t|
+    t.integer "handle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["handle_id"], name: "index_tweets_on_handle_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "user_handle"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "comments", "users"
+  add_foreign_key "tweets", "handles"
 end
