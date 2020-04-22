@@ -3,8 +3,8 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   def index
-    @user = User.find(params[:user_id])
-    @tweets = CLIENT.user_timeline(@user.name)
+    @handle = Handle.find(params[:handle_id])
+    @tweets = CLIENT.user_timeline(@handle.name)
     render json: @tweets
   end
 
@@ -46,6 +46,6 @@ class TweetsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def tweet_params
-      params.require(:tweet).permit(:user_id)
+      params.require(:tweet).permit(:handle_id)
     end
 end
