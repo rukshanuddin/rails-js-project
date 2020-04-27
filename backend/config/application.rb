@@ -15,9 +15,13 @@ require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
 require 'twitter'
+require 'dotenv'
+require 'dotenv-rails'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+Dotenv::Railtie.load
 
 module Backend
   class Application < Rails::Application
