@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :set_comment, only: %i[show update destroy]
 
   # GET /comments
   def index
@@ -45,8 +45,15 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
-    # Only allow a trusted parameter "white list" through.
+  # Only allow a trusted parameter "white list" through.
   def comment_params
-    params.permit(:comment, :user_id, :content, :t_user_profile_image_url, :t_user_screen_name, :t_text, :t_user_profile_banner_url, :t_user_name)
+    params.permit(:comment,
+                  :user_id,
+                  :content,
+                  :t_user_profile_image_url,
+                  :t_user_screen_name,
+                  :t_text,
+                  :t_user_profile_banner_url,
+                  :t_user_name)
   end
 end

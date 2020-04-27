@@ -1,5 +1,5 @@
 class HandlesController < ApplicationController
-  before_action :set_handle, only: [:show, :update, :destroy]
+  before_action :set_handle, only: %i[show update destroy]
 
   # GET /handles
   def index
