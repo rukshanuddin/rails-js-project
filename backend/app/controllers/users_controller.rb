@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-    redirect_to user_path(@user)
+    redirect_to user_comments_path(@user)
   end
 
   # POST /users
