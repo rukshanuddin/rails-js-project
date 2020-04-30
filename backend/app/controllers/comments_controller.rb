@@ -1,11 +1,9 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[show update destroy]
 
-  # GET /comments
   def index
-    @comments = Comment.all
-
-    render json: @comments
+    @comments = Comment.where(user_id: params[:user_id])
+    render json: @comments, include: :user
   end
 
   # GET /comments/1
@@ -16,7 +14,6 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = Comment.create(comment_params)
-
     if @comment.valid?
       render json: @comment
     else
