@@ -183,7 +183,7 @@ Lastly, I added a ```.catch()``` to handle any errors that come up in the previo
 
 I added a button to delete "handles" from my application. Now, since we want to keep everything on one page (no redirects), I utilized a fetch request to **DELETE** "handles" from my database.
 
-### Event Listener
+### Event Listener for Delete Button
 
 The first step I took was to add a listener to the delete button I had created.
 
