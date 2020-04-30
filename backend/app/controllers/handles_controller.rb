@@ -16,7 +16,11 @@ class HandlesController < ApplicationController
   # POST /handles
   def create
     @handle = Handle.find_or_create_by(handle_params)
-    render json: @handle
+    if @handle.valid?
+      render json: @handle, status: :created, location: @handle
+    else
+      render json: @handle.errors, status: :unprocessable_entity
+    end
   end
 
   # DELETE /handles/1
