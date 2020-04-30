@@ -1,6 +1,6 @@
 const HANDLES_URL = `${BASE_URL}/handles`
-const addBtn = document.querySelector("body > header > div > div > div.menu > div.handle-form > form > input.submit-handle.pure-button.pure-button-primary")
-const handleForm = document.querySelector("body > header > div > div > div.menu > div.handle-form > form")
+const addBtn = document.getElementById("addBtn")
+const handleForm = document.getElementById("handleForm")
 const handlesContainer = document.querySelector("body > div");
 const handlesContent = document.getElementById("handle_content")
 
@@ -20,41 +20,9 @@ function renderHandle(handle) {
       <button id=${handle.id}>Fetch Tweets</button>
       <ul class="" id=${handle.id} data-handle-ul=${handle.id}></ul>
     </div>`;
-
     handlesContent.insertAdjacentHTML('beforeend', html);
 };
 
-
-
-handlesContainer.addEventListener('click', (e) => {
-    const handleUl = e.target.nextElementSibling
-    if (e.target.innerText === "Fetch Tweets") {
-        const handle = e.target;
-        fetchTweets(handle.id);
-        handle.innerText = "Show/Hide Tweets"
-    } else if (e.target.innerText === "Show/Hide Tweets") {
-        const handleId = e.target.dataset.handleId;
-        if (handleUl.className === "hide") {
-            handleUl.className = ""
-        } else {
-            handleUl.className = "hide"
-        }
-    } else if (e.target.innerText === "Delete Handle") {
-        
-        let handleId = e.target.id;
-        debugger;
-        deleteHandle(handleId)
-    } else if (e.target.innerText === "Show Handles") {
-        fetchHandles();
-        e.target.innerText = "Hide Handles"
-    } else if (e.target.innerText === "Hide Handles") {
-        handlesContent.innerHTML = "";
-        e.target.innerText = "Show Handles"
-    } else if (e.target.innerText === "Fetch Handles") {
-        fetchHandles();
-        e.target.innerText = "Hide Handles"
-    }
-});
 function clearHandles() {
     handlesContent.innerHTML = ""
 }
@@ -84,18 +52,36 @@ function postHandle(handle_data) {
             })
         })
         .then(res => res.json())
+        .then(handle => {renderHandle(handle)})
+        .then(fetchHandles())
         .catch((err) => {
             console.log(err.message)
         })
-
-
 }
-addBtn.addEventListener('click', () => {
 
-    handleForm.style.display = 'block'
-    handleForm.addEventListener('submit', event => {
-        event.preventDefault()
-        postHandle(event.target)
-    })
-
+handleForm.addEventListener('submit', event => {
+    event.preventDefault()
+    postHandle(event.target)
 })
+
+handlesContainer.addEventListener('click', (e) => {
+    const handleUl = e.target.nextElementSibling
+    if (e.target.innerText === "Fetch Tweets") {
+        fetchTweets(e.target.id);
+        e.target.innerText = "Show/Hide Tweets"
+    } else if (e.target.innerText === "Show/Hide Tweets") {
+        if (handleUl.className === "hide") {
+            handleUl.className = ""
+        } else {
+            handleUl.className = "hide"
+        }
+    } else if (e.target.innerText === "Delete Handle") {
+        deleteHandle(e.target.id)
+    } else if (e.target.innerText === "Show Handles") {
+        fetchHandles();
+        e.target.innerText = "Hide Handles"
+    } else if (e.target.innerText === "Hide Handles") {
+        clearHandles();
+        e.target.innerText = "Show Handles"
+    }
+});
