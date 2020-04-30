@@ -233,8 +233,6 @@ label {
         font-size: 16px;
     }
 
-    /* We can align the menu header to the left, but float the
-    menu items to the right. */
     .home-menu {
         text-align: left;
     }
@@ -248,8 +246,6 @@ label {
         height: 500px;
     }*/
 
-    /* We decrease the width of the .splash, since we have more width
-    to work with */
     .splash {
         width: 50%;
         height: 50%;
@@ -259,22 +255,14 @@ label {
         font-size: 250%;
     }
 
-
-    /* We remove the border-separator assigned to .l-box-lrg */
     .l-box-lrg {
         border: none;
     }
 
 }
 
-/*
- * -- DESKTOP (AND UP) MEDIA QUERIES --
- * On desktops and other large devices, we want to over-ride some
- * of the mobile and tablet styles.
- */
 @media (min-width: 78em) {
 
-    /* We increase the header font size even more */
     .splash-head {
         font-size: 300%;
     }
