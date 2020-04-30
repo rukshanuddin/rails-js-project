@@ -1,9 +1,7 @@
-const menu = document.querySelector("body > header > div > div > div.menu")
-const menuBtn = document.querySelector("body > header > div > div > div:nth-child(3) > button")
+const menu = document.getElementById("menu")
+const menuBtn = document.getElementById("menuBtn")
 
 fetchUsers()
-fetchHandles()
-
 menuBtn.addEventListener('click', () => {
     if (menu.style.display === 'none') {
         menu.style.display = 'block';
