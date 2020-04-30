@@ -10,56 +10,71 @@
 
 <body>
     <header>
-
         <div class="header splash-container">
             <div class="splash">
                 <h1 class="splash-head">TweetGrab!</h1>
-
-                <div class="menu ">
-
+                <div class="menu " id="menu">
                     <p class="splash-subhead">Grab Tweets!</p>
                     <div class="user-form">
-                        <form class="add-user-form pure-form">
+                        <form id="userForm" class="add-user-form pure-form">
                             <h2>Who are you?</h2>
-                            <input type="text" name="name" value="" placeholder="Enter your name" class="input-text">
-
-                            <input type="text" name="handle" value="" placeholder="Enter your Twitter Handle/Alias"
-                                class="input-text">
-
-                            <input type="submit" name="submit" value="Submit"
-                                class="submit-user pure-button pure-button-primary">
+                            <input type="text"
+                                   name="name"
+                                   value=""
+                                   placeholder="Enter your name"
+                                   class="input-text">
+                            <input type="text"
+                                   name="handle"
+                                   value=""
+                                   placeholder="Enter your Twitter Handle/Alias"
+                                   class="input-text">
+                            <input type="submit"
+                                   name="submit"
+                                   value="Submit"
+                                   id="addUser"
+                                   class="submit-user pure-button pure-button-primary">
                         </form>
                     </div>
                     <div class="handle-form">
-                        <form class="add-handle-form pure-form">
+                        <form id="handleForm" class="add-handle-form pure-form">
                             <h3>Check the tweets!</h3>
-                            <input type="text" name="name" value="" placeholder="Enter a Twitter Handle..."
-                                class="input-text">
-                            <input type="submit" name="submit" value="Add a handle to your list!"
-                                class="submit-handle pure-button pure-button-primary">
+                            <input type="text"
+                                   name="name"
+                                   value=""
+                                   placeholder="Enter a Twitter Handle..."
+                                   class="input-text">
+                            <input type="submit"
+                                   name="submit"
+                                   value="Add a handle to your list!"
+                                   id="addBtn"
+                                   class="submit-handle pure-button pure-button-primary">
                         </form>
                     </div>
-
                 </div>
                 <div>
-                    <div class="welcome"></div>
+                    <div id="welcome" class="welcome"></div>
                     <br>
-                    <button class="pure-button pure-button-primary"> Hide Menu </button>
+                    <button id="menuBtn" class="pure-button pure-button-primary"> Hide Menu </button>
                 </div>
             </div>
-
         </div>
         <br>
-
-
         </div>
-
     </header>
 
 
     <div class="main content-wrapper hide">
         <div>
-        <h2 class="content-head is-center">Tweet<br><br><button class="menu pure-button">Fetch Handles</button></h2>
+        <h2 class="content-head is-center">
+            Tweet
+            <br>
+            <br>
+            <button class="menu pure-button">
+                Show Handles
+            </button>
+            <br>
+            <br>
+            <button id="allComments" class="menu pure-button">All Comments</button></h2>
         <p class="content-subhead is-center">The handles you have selected</p>
         </div>
         <div id="handle_content"></div>
@@ -69,8 +84,10 @@
 
 </body>
 <script src="./src/components/users.js"></script>
-<script src="./src/components/tweets.js"></script>
 <script src="./src/components/handles.js"></script>
+<script src="./src/components/comments.js"></script>
+<script src="./src/components/tweets.js"></script>
+
 <script src="./src/index.js"></script>
 
 </html>
