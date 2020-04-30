@@ -40,10 +40,6 @@ label {
     height: auto;
 }
 
-/*
- * -- LAYOUT STYLES --
- * These are some useful classes which I will need
- */
 .l-box {
     padding: 1em;
 }
@@ -57,12 +53,6 @@ label {
     text-align: center;
 }
 
-
-
-/*
- * -- PURE FORM STYLES --
- * Style the form inputs and labels
- */
 .pure-form label {
     margin: 1em 0 0;
     font-weight: bold;
@@ -96,11 +86,6 @@ label {
 }
 
 
-/*
- * -- MENU STYLES --
- * I want to customize how my .pure-menu looks at the top of the page
- */
-
 .home-menu {
     padding: 0.5em;
     text-align: center;
@@ -112,9 +97,9 @@ label {
 }
 
 .pure-menu.pure-menu-fixed {
-    /* Fixed menus normally have a border at the bottom. */
+
     border-bottom: none;
-    /* I need a higher z-index here because of the scroll-over effect. */
+
     z-index: 4;
 }
 
@@ -140,25 +125,21 @@ label {
 }
 
 
-/*
- * -- SPLASH STYLES --
- * This is the blue top section that appears on the page.
- */
 
 .splash-container {
     background: #1f8dd6;
     z-index: 1;
     overflow: hidden;
-    /* The following styles are required for the "scroll-over" effect */
+
     width: 100%;
-    height: 88%;
+    height: 90%;
     top: 0;
     left: 0;
     position: fixed !important;
 }
 
 .splash {
-    /* absolute center .splash within .splash-container */
+
     width: 80%;
     height: 50%;
     margin: 0 auto;
@@ -171,7 +152,6 @@ label {
     text-transform: uppercase;
 }
 
-/* This is the main heading that appears on the blue section */
 .splash-head {
     font-size: 20px;
     font-weight: bold;
@@ -183,25 +163,20 @@ label {
     line-height: 1em;
 }
 
-/* This is the subheading that appears on the blue section */
 .splash-subhead {
     color: white;
     letter-spacing: 0.05em;
     opacity: 0.8;
 }
 
-/*
- * -- CONTENT STYLES --
- * This represents the content area (everything below the blue section)
- */
+
 .content-wrapper {
-    /* These styles are required for the "scroll-over" effect */
     position: absolute;
-    top: 87%;
+    top: 92%;
     width: 98%;
     min-height: 12%;
     z-index: 2;
-    background: white;
+    background: whitesmoke;
 
 }
 
