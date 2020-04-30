@@ -9,21 +9,14 @@ class HandlesController < ApplicationController
 
   # GET /handles/1
   def show
-    redirect_to handle_tweets_path(@handle)
+    @tweets = CLIENT.user_timeline(@handle.name, tweet_mode: 'extended')
+    render json: @tweets
   end
 
   # POST /handles
   def create
     @handle = Handle.find_or_create_by(handle_params)
-  end
-
-  # PATCH/PUT /handles/1
-  def update
-    if @handle.update(handle_params)
-      render json: @handle
-    else
-      render json: @handle.errors, status: :unprocessable_entity
-    end
+    render json: @handle
   end
 
   # DELETE /handles/1
