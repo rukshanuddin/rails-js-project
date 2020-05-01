@@ -13,8 +13,8 @@ function renderTweet(tweet, handleUl) {
     const html = `
         <div data-tweet-id=${tweet.id} class="tweet">
             <img class="image" src=${tweet.user.profile_banner_url}>
-            <img class="profile_image" src=${tweet.user.profile_image_url}>
-          <p>${tweet.full_text} (${tweet.user.name}), ${tweet.user.description} </p>
+            
+          <p><img class="profile_image" src=${tweet.user.profile_image_url}>${tweet.full_text} (${tweet.user.name}), ${tweet.user.description} </p>
           <button class="delete" data-tweet-id=${tweet.id}>
             Delete
           </button></br>

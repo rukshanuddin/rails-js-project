@@ -12,7 +12,9 @@ img {
     padding: 5px;
     margin: 5px;
 }
-
+button#sortComments {
+    display: none;
+}
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
