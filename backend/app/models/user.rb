@@ -3,5 +3,4 @@ class User < ApplicationRecord
   validates :user_handle, presence: true, uniqueness: { case_sensitive: false }
 
   has_many :comments
-  has_many :handles
 end
