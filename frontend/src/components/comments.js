@@ -1,7 +1,6 @@
 function postComment(comment_data) {
     let userNum = document.getElementById("welcomeUser").dataset.userId
     let tweetNum = comment_data.id
-    debugger;
     fetch(`http://localhost:3000/users/${userNum}/comments`, {
             method: 'POST',
             headers: {
@@ -41,9 +40,8 @@ function renderComment(object, id) {
 
 function renderFullComment(comment) {
     const html = `
-    <div class="content" comment=${comment.id}>
-    <h3 class="content-head">${comment.t_user_name} Posted:</h3>
-    <img class="image" src=${comment.t_user_profile_image_url}>
+    <div class="content" id="${comment.t_user_screen_name} comment=${comment.id}>
+    <h3 class="content-head"><img class="image" src=${comment.t_user_profile_image_url}>${comment.t_user_name} Posted:</h3>
     <p>${comment.t_text}<p>
     <h4>${comment.user.name} commented:</h4>
     <p><em>${comment.content}</em></p>
@@ -62,11 +60,36 @@ function renderUserComments(){
             comments.forEach(renderFullComment);
         })
 }
+function renderSortedComments() {
+    let id = document.getElementById("welcomeUser").dataset.userId
+    fetch(`http://localhost:3000/users/${id}/comments`)
+        .then(resp => resp.json())
+        .then(comments => {
+            clearHandles();
+            comments.sort(function (a, b) {
+                let nameA = a.t_user_name.toUpperCase();
+                let nameB = b.t_user_name.toUpperCase();
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+            }).forEach(renderFullComment);
+        })
+}
 
 const allComments = document.getElementById("allComments")
+const sortComments = document.getElementById("sortComments")
 
 allComments.addEventListener('click', event => {
+    sortComments.style.display = 'inline'
     event.preventDefault()
     renderUserComments()
+    
 })
 
+sortComments.addEventListener('click', event => {
+    event.preventDefault()
+    renderSortedComments()
+})
