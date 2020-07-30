@@ -2,6 +2,7 @@ const menu = document.getElementById("menu")
 const menuBtn = document.getElementById("menuBtn")
 
 fetchUsers()
+
 menuBtn.addEventListener('click', () => {
     if (menu.style.display === 'none') {
         menu.style.display = 'block';
